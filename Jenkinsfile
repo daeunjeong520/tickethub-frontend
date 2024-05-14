@@ -9,7 +9,7 @@ pipeline {
   // 레포지토리가 없으면 생성됨
   // Credential들에는 젠킨스 크레덴셜에서 설정한 ID를 사용
   environment {
-    awsecrRegistry = '851725651012.dkr.ecr.ap-northeast-2.amazonaws.com/tickethub_frontend'
+    awsecrRegistry = '975049975608.dkr.ecr.ap-northeast-2.amazonaws.com/tickethub-frontend'
     awsecrRegistryCredential = 'credential-AWS-ECR'
     
     //배포
@@ -19,8 +19,7 @@ pipeline {
     
     // 앱
     githubCredentialApplication = 'credential-github-application'
-    //gitEmailApplication = 'jungde1345@gmail.com'
-    //gitNameApplication = 'daeunjeong520'
+   
   }
 
   stages {
@@ -89,32 +88,33 @@ pipeline {
         }
       }
     }
+    
 
     // updated docker image 태그를 git push 
-    stage('Deploy') { 
-      steps {
-        // git 계정 로그인, 해당 레포지토리의 main 브랜치에서 클론
-        git credentialsId: githubCredential,
-            url: 'https://github.com/SEUNGMIN-KIM-05/test.git',
-            branch: 'main'  
+    // stage('Deploy') { 
+    //   steps {
+    //     // git 계정 로그인, 해당 레포지토리의 main 브랜치에서 클론
+    //     git credentialsId: githubCredential,
+    //         url: 'https://github.com/SEUNGMIN-KIM-05/test.git',
+    //         branch: 'main'  
         
-        // 이미지 태그 변경 후 메인 브랜치에 푸시
-        sh "git config --global user.email ${gitEmail}"
-        sh "git config --global user.name ${gitName}"
-        sh "cd prod && cd frontend && kustomize edit set image ${awsecrRegistry}:${currentBuild.number} && kustomize build ."
-        sh "git add -A"
-        sh "git status"
-        sh "git commit -m 'update the image tag'"
-        sh "git branch -M main"
-        }
-    }
+    //     // 이미지 태그 변경 후 메인 브랜치에 푸시
+    //     sh "git config --global user.email ${gitEmail}"
+    //     sh "git config --global user.name ${gitName}"
+    //     sh "cd prod && cd frontend && kustomize edit set image ${awsecrRegistry}:${currentBuild.number} && kustomize build ."
+    //     sh "git add -A"
+    //     sh "git status"
+    //     sh "git commit -m 'update the image tag'"
+    //     sh "git branch -M main"
+    //     }
+    // }
     
-    stage('Push to Git Repository') {
-      steps {
-        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: githubCredential, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
-             sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/SEUNGMIN-KIM-05/test.git"       
-        }
-      }
-    }
+    // stage('Push to Git Repository') {
+    //   steps {
+    //     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: githubCredential, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
+    //          sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/SEUNGMIN-KIM-05/test.git"       
+    //     }
+    //   }
+    // }
   }
 }
