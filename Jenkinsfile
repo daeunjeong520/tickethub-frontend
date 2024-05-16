@@ -9,7 +9,7 @@ pipeline {
   // 레포지토리가 없으면 생성됨
   // Credential들에는 젠킨스 크레덴셜에서 설정한 ID를 사용
   environment {
-    awsecrRegistry = '975049975608.dkr.ecr.ap-northeast-2.amazonaws.com/tickethub-frontend'
+    awsecrRegistry = '814835082161.dkr.ecr.ap-northeast-2.amazonaws.com/tickethub-frontend'
     awsecrRegistryCredential = 'credential-AWS-ECR'
     
     //배포
