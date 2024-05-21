@@ -11,28 +11,22 @@
             <div class="content">
                 <!-- signup info -->
                 <div class="signup-info">
-                    <div class="mb-3 row">
-                        <label for="loginId" class="col-sm-2 col-form-label">아이디</label>
+                    <!-- <div class="mb-3 row">
+                        <label for="loginId" class="col-sm-2 col-form-label">이메일</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" id="loginId" v-model="state.form.loginId">
+                        <input type="text" class="form-control" id="email" v-model="state.form.email">
                         </div>
-                    </div>
+                    </div> -->
                     <div class="mb-3 row">
-                        <label for="loginPw" class="col-sm-2 col-form-label">비밀번호</label>
-                        <div class="col-sm-10">
-                        <input type="password" class="form-control" id="loginPw" v-model="state.form.loginPw">
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label for="username" class="col-sm-2 col-form-label">이름</label>
+                        <label for="username" class="col-sm-2 col-form-label">아이디</label>
                         <div class="col-sm-10">
                         <input type="text" class="form-control" id="username" v-model="state.form.username">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="nickname" class="col-sm-2 col-form-label">닉네임</label>
+                        <label for="loginPw" class="col-sm-2 col-form-label">비밀번호</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" id="nickname" v-model="state.form.nickname">
+                        <input type="password" class="form-control" id="password" v-model="state.form.password">
                         </div>
                     </div>
                         </div>
@@ -57,29 +51,36 @@ export default {
     name: "SignUp",
     setup() {
         const state = reactive({
-            form: {
-                loginId: "",
-                loginPw: "",
+            account: {
+                userId: null,
                 username: "",
-                nickname: ""
-                //roles: []
+                role: ""
+            },
+            form: {
+                username: "",
+                password: "",
+                role: "USER"
+            },
+            error: {
+                message: ""
             }
         });
 
         const submit = () => {
             const args = {
-                loginId: state.form.loginId,
-                loginPw: state.form.loginPw,
                 username: state.form.username,
-                nickname: state.form.nickname
-                //roles: ["USER"]
-            };
+                password: state.form.password,
+                role: state.form.role
+            }
 
             axios.post("/api/users/signup", args)
                 .then((res) => {
-                    alert("회원 가입에 성공했습니다");
-                    state.account = res.data;
-                    router.push({ path: "/"});
+                    alert("회원가입에 성공했습니다")
+                    state.account = res.data
+                    router.push({path: "/"})
+                })
+                .catch((err) => {
+                    window.alert("이미 존재하는 회원입니다")
                 })
         };
 

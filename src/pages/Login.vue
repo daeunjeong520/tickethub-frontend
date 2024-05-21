@@ -14,13 +14,13 @@
                     <div class="mb-3 row">
                         <label for="loginId" class="col-sm-2 col-form-label">아이디</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" id="loginId" v-model="state.form.loginId">
+                            <input type="text" class="form-control" id="username" v-model="state.form.username">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="loginPw" class="col-sm-2 col-form-label">비밀번호</label>
                         <div class="col-sm-10">
-                        <input type="password" class="form-control" id="loginPw" v-model="state.form.loginPw">
+                            <input type="password" class="form-control" id="password" v-model="state.form.password">
                         </div>
                     </div>
                 </div>
@@ -47,25 +47,21 @@ export default {
     setup() {
         const state = reactive({
             form: {
-                loginId: "",
-                loginPw: ""
+                username: "",
+                password: ""
             }
         });
 
         const submit = () => {
-            const args = {
-                loginId: state.form.loginId,
-                loginPw: state.form.loginPw
-            };
-
-            axios.post("/api/users/login", args)
-                .then((res) => {
-                    console.log(res.data.userId);
-                    store.commit('setAccount', res.data.userId)
-                    alert("로그인에 성공했습니다");
-                    state.account = res.data;
-                    router.push({ path: "/"});
-                })
+            axios.post("/api/users/login", state.form).then((res) => {
+                store.commit("setAccount", res.data)
+                sessionStorage.setItem("id", res.data)
+                console.log(res.data);
+                window.alert("로그인하였습니다")
+                router.push({path: "/"})
+            }).catch(() => {
+                window.alert("로그인 정보가 존재하지 않습니다.")
+            })
         };
 
         return { state, submit }

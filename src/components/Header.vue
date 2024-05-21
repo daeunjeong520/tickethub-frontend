@@ -32,6 +32,7 @@
 <script>
 import store from '@/scripts/store';
 import router from '@/scripts/router';
+import axios from "axios";
 
 export default {
     name: "Header",
@@ -40,10 +41,10 @@ export default {
         store.commit("setAccount", 0);
         router.push({path: "/"});
 
-        // axios.delete("/api/account")
-        //   .then(() => {
-        //     window.alert('로그아웃 하였습니다');
-        // })
+        axios.post("/api/users/logout")
+          .then(() => {
+            window.alert('로그아웃 하였습니다');
+          })
       }
 
       return { logout }
