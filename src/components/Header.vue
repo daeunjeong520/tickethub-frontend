@@ -17,13 +17,18 @@
 
       <div class="col-md-3 text-end">
         <!-- login/logout -->
-          <div class="col-md-3 text-end">
-            <router-link to="/login" class="text" v-if="!$store.state.account.id">로그인</router-link>
-            <a to="/login" class="text" @click="logout()" v-else>로그아웃</a>
-          </div>
-        <router-link :to="{path: `/signup`}">
-            <button type="button" class="btn">회원가입</button>
-        </router-link>
+
+            <router-link to="/login" class="text" v-if="!$store.state.account.id">
+              <button type="button" class="btn">로그인</button>
+            </router-link>
+            <button type="button" class="btn" @click="logout()" v-else>로그아웃</button>
+
+          <router-link :to="{path: `/signup`}">
+              <button type="button" class="btn">회원가입</button>
+          </router-link>
+          <router-link to="/my/books" class="text" v-if="$store.state.account.id">
+            <button type="button" class="btn">마이페이지</button>
+          </router-link>
       </div>
     </header>
   </div>
@@ -47,7 +52,19 @@ export default {
           })
       }
 
-      return { logout }
+      // my Page
+      const goToMyPage = () => {
+        axios.get("/api/users/check")
+          .then((res) => {
+            router.push({path: "/my/books"})
+          })
+          .catch((err) => {
+            window.alert("로그인이 필요한 서비스입니다")
+            router.push({path: "/login"})
+          })
+      }
+
+      return { logout, goToMyPage }
     }
 }
 </script>

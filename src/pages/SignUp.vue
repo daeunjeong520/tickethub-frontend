@@ -46,6 +46,7 @@
 import { reactive } from "vue";
 import axios from "axios";
 import router from "@/scripts/router";
+axios.defaults.withCredentials = true;
 
 export default {
     name: "SignUp",

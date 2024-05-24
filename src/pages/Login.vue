@@ -41,6 +41,7 @@ import { reactive } from "vue";
 import axios from "axios";
 import router from "@/scripts/router";
 import store from '@/scripts/store';
+axios.defaults.withCredentials = true; 
 
 export default {
     name: "Login",
@@ -55,12 +56,12 @@ export default {
         const submit = () => {
             axios.post("/api/users/login", state.form).then((res) => {
                 store.commit("setAccount", res.data)
-                sessionStorage.setItem("id", res.data)
                 console.log(res.data);
+
                 window.alert("로그인하였습니다")
                 router.push({path: "/"})
             }).catch(() => {
-                window.alert("로그인 정보가 존재하지 않습니다.")
+                window.alert("아이디 또는 비밀번호를 확인해주세요")
             })
         };
 

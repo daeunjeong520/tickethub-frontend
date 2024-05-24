@@ -45,7 +45,7 @@
 import axios from "axios";
 import { reactive } from "vue";
 import { useRoute } from "vue-router";
-
+axios.defaults.withCredentials = true; 
 
 export default {
     name: "PerformanceDetail",

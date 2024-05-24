@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+import createPersistedState from 'vuex-persistedstate';
 
 const store = createStore({
     state() {
@@ -12,7 +13,8 @@ const store = createStore({
         setAccount(state, payload) {
             state.account.id = payload
         }
-    }
+    },
+    plugins: [createPersistedState()]
 });
 
 export default store;

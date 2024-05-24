@@ -11,6 +11,7 @@ import store from "@/scripts/store"
 import axios from "axios"
 import { watch } from "vue"
 import { useRoute } from "vue-router"
+axios.defaults.withCredentials = true; 
 
 export default {
   name: 'App',
@@ -21,8 +22,6 @@ export default {
   setup() {
     const check = () => {
       axios.get("/api/users/check").then(({data}) => {
-        console.log(data);
-
         if(data) {
           store.commit("setAccount", data);
         }else {
