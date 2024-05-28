@@ -6,15 +6,16 @@
             <img :src="`${state.performance.posterPath}`" />
             <div class="col-lg-6">
                 <h1 class="display-5 fw-bold lh-1 mb-3">{{ state.performance.name }}</h1>
+                <span class="badge text-bg-success">{{ state.performance.category }}</span>
                 <table class="table table-borderless">
                     <tbody>
                         <tr>
                             <th scope="row">공연시간</th>
-                            <td>{{ state.performance.viewingHours }}시간</td>
+                            <td>총 {{ state.performance.viewingHours }}분</td>
                         </tr>
                         <tr>
                             <th scope="row">공연날짜</th>
-                            <td>{{ state.performance.date }}</td>
+                            <td>{{ state.date[0] }}년 {{ state.date[1]}}월 {{ state.date[2]}}일</td>
                         </tr>
                         <tr>
                             <th scope="row">출연진</th>
@@ -54,12 +55,14 @@ export default {
         const id = route.params.id;
         const state = reactive({
             performance: {},
-            seats: {}
+            seats: {},
+            date: []
         })
 
         axios.get("/api/performances/" + id).then((res) => {
             state.performance = res.data;
             state.seats = state.performance.seats       
+            state.date = state.performance.date
         })
 
         return { route, id, state }

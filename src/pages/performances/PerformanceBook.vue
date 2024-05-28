@@ -76,6 +76,20 @@
                         </div>
                     </div>
                 </div> {{ state.seatPrice["E"] }}원
+                <br>
+                F
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group" v-for="(seat, idx) in state.seats" :key="idx">
+                    <div v-if="seat.seatRow == 'F'">
+                        <div v-if="!seat.isBook">
+                            <input type="checkbox" class="btn-check" autocomplete="off" v-bind:id="seat.seatId" v-model="state.seatIdList" v-bind:value="seat.seatId">
+                            <label class="btn btn-outline-secondary" v-bind:for="seat.seatId">{{ seat.seatRow }}{{ seat.seatCol }}</label><p></p>
+                        </div>
+                        <div v-else>
+                            <input type="checkbox" class="btn-check" autocomplete="off" v-bind:id="seat.seatId" v-model="seat.seatIdList" disabled>
+                            <label class="btn btn-secondary" v-bind:for="seat.seatId">{{ seat.seatRow }}{{ seat.seatCol }}</label><p></p>
+                        </div>
+                    </div>
+                </div> {{ state.seatPrice["F"] }}원
             </div>
 
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">

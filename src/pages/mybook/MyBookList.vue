@@ -10,21 +10,21 @@
                 <div class="col-md-6" v-for="(book, idx) in state.bookList" :key="idx">
                     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                         <div class="col p-4 d-flex flex-column position-static">
-                        <strong class="d-inline-block mb-2 text-primary-emphasis">결제 대기중</strong>
-                        <h3 class="mb-0">{{ book.performanceName }}</h3>
+                        <span class="badge text-bg-success">{{ book.category }}</span>
+                        <h3 class="mb-4">{{ book.performanceName }}</h3>
                         <div class="mb-1 text-body-secondary">출연진: {{ book.cast }}</div>
                             <p class="card-text mb-auto">결제금액: {{ book.totalPrice }}원</p>
 
                             <div class="seat-box">
                                 좌석
-                                <div class="col-md-6" v-for="(seatName, idx) in book.seatNameList" :key="idx">
-                                    <p class="card-text mb-auto">{{ seatName }}</p>
+                                <div class="inline" v-for="(seatName, idx) in book.seatNameList" :key="idx">
+                                    <div class="card-text mb-auto"><span class="seat-name">{{ seatName }}</span></div>
                                 </div>
                             </div>
                         </div>
                         
                         <router-link :to="{path: `/my/books/${book.bookId}`}" class="icon-link gap-1 icon-link-hover stretched-link">
-                            자세히 보기
+                            > 자세히 보기
                         </router-link>
                     </div>
             </div>
@@ -62,7 +62,19 @@ export default {
         background-size: cover;
         background-position: center;
     }
-    .seat-box {
-        margin-top: 1rem;
+    .inline {
+        display: inline-block;
+        margin-right: 0.5rem;
+    }
+    .icon-link {
+        margin: 1rem;
+    }
+    .badge {
+        width: 10%;
+        margin-bottom: 1rem;
+    }
+    .seat-name {
+        font-weight: bold;
+        color: #6c757d;
     }
 </style>

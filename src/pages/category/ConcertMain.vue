@@ -49,6 +49,9 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  width: 60%;
+}
 .card-text {
     text-align: center;
 }

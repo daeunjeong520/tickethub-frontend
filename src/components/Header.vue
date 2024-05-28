@@ -110,9 +110,13 @@ export default {
   color: white;
 }
 
-.btn-mypage:hover {
-  background-color: lightgray;
+.btn-mypage {
+  background-color: gray;
   color: white;
+}
+.btn-mypage:hover {
+  background-color: white;
+  color: gray;
 }
     
 </style>
