@@ -5,7 +5,7 @@
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
             <img :src="`${state.book.posterPath}`" />
             <div class="col-lg-6">
-                <h1 class="display-5 fw-bold lh-1 mb-3">{{ state.book.name }}</h1>
+                <h1 class="display-5 fw-bold lh-1 mb-3">{{ state.book.performanceName }}</h1>
                 <table class="table table-borderless">
                     <tbody>
                         <tr>
@@ -24,17 +24,16 @@
                             <th scope="row">장소</th>
                             <td>{{ state.book.location}}</td>
                         </tr>
-                        <tr>
-                            <th scope="row">좌석 타입</th>
-                            <td>{{ state.book.seatType}}</td>
+                        
+                        <!-- 좌석 정보 -->
+                        <tr v-for="(seat, idx) in state.book.seats" :key="idx">
+                            <td>{{ seat.seatRow }}{{ seat.seatCol }}</td>
+                            <td>{{ seat.price }}</td>
                         </tr>
-                         <tr>
-                            <th scope="row">좌석 개수</th>
-                            <td>{{ state.book.bookSeatNum}}좌석</td>
-                        </tr>
+                        
                          <tr>
                             <th scope="row">결제 가격</th>
-                            <td>{{ state.book.bookPrice}}원</td>
+                            <td>{{ state.book.totalPrice}}원</td>
                         </tr>
                          <tr>
                             <th scope="row">결제 상태</th>

@@ -8,6 +8,7 @@ import MyBookDetail from "@/pages/mybook/MyBookDetail.vue"
 
 import Login from "@/pages/Login.vue"
 import SignUp from "@/pages/SignUp.vue"
+import Test from "@/pages/Test.vue"
 
 const routes = [
     { path: "/", component: Home},
@@ -16,7 +17,9 @@ const routes = [
     { path: "/my/books", component: MyBookList},
     { path: "/my/books/:id", component: MyBookDetail },
     { path: "/login", component: Login},
-    { path: "/signup", component: SignUp}
+    { path: "/signup", component: SignUp},
+
+    { path: "/test", component: Test}
 ]
 
 const router = createRouter({

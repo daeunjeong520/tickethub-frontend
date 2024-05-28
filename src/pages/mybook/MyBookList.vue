@@ -12,10 +12,17 @@
                         <div class="col p-4 d-flex flex-column position-static">
                         <strong class="d-inline-block mb-2 text-primary-emphasis">결제 대기중</strong>
                         <h3 class="mb-0">{{ book.performanceName }}</h3>
-                        <div class="mb-1 text-body-secondary">날짜: {{ book.date }}</div>
-                        <p class="card-text mb-auto">결제금액: {{ book.bookPrice }}원</p>
-                        <p class="card-text mb-auto">좌석타입: {{ book.seatType }}</p>
+                        <div class="mb-1 text-body-secondary">출연진: {{ book.cast }}</div>
+                            <p class="card-text mb-auto">결제금액: {{ book.totalPrice }}원</p>
+
+                            <div class="seat-box">
+                                좌석
+                                <div class="col-md-6" v-for="(seatName, idx) in book.seatNameList" :key="idx">
+                                    <p class="card-text mb-auto">{{ seatName }}</p>
+                                </div>
+                            </div>
                         </div>
+                        
                         <router-link :to="{path: `/my/books/${book.bookId}`}" class="icon-link gap-1 icon-link-hover stretched-link">
                             자세히 보기
                         </router-link>
@@ -54,5 +61,8 @@ export default {
         height: 450px;
         background-size: cover;
         background-position: center;
+    }
+    .seat-box {
+        margin-top: 1rem;
     }
 </style>

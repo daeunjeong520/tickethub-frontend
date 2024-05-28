@@ -19,15 +19,15 @@
         <!-- login/logout -->
 
             <router-link to="/login" class="text" v-if="!$store.state.account.id">
-              <button type="button" class="btn">로그인</button>
+              <button type="button" class="btn btn-login">로그인</button>
             </router-link>
-            <button type="button" class="btn" @click="logout()" v-else>로그아웃</button>
+            <button type="button" class="btn btn-logout" @click="logout()" v-else>로그아웃</button>
 
           <router-link :to="{path: `/signup`}">
-              <button type="button" class="btn">회원가입</button>
+              <button type="button" class="btn btn-signup">회원가입</button>
           </router-link>
           <router-link to="/my/books" class="text" v-if="$store.state.account.id">
-            <button type="button" class="btn">마이페이지</button>
+            <button type="button" class="btn btn-mypage">마이페이지</button>
           </router-link>
       </div>
     </header>
@@ -70,9 +70,30 @@ export default {
 </script>
 
 <style scoped>
-    .logo-style {
-        font-size: 1.2rem;
-        color: gray;
-        margin-top: 0.7rem;
-    }
+.logo-style {
+    font-size: 1.2rem;
+    color: gray;
+    margin-top: 0.7rem;
+}
+
+.btn-login:hover {
+  background-color: lightgray;
+  color: white;
+}
+
+.btn-logout:hover {
+  background-color: lightgray;
+  color: white;
+}
+
+.btn-signup:hover {
+  background-color: lightgray;
+  color: white;
+}
+
+.btn-mypage:hover {
+  background-color: lightgray;
+  color: white;
+}
+    
 </style>

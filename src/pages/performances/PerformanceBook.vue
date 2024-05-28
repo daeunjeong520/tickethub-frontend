@@ -1,40 +1,89 @@
 <!-- 예매 상세 페이지  -->
 <template>
-    <main class="container">
-        <!-- <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
-            <div class="col-lg-6 px-0">
-                <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
-                <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-                <p class="lead mb-0"><a href="#" class="text-body-emphasis fw-bold">Continue reading...</a></p>
+    <div class="px-4 py-5 my-5 text-center">
+        <h1 class="display-5 fw-bold text-body-emphasis">좌석 선택</h1>
+        <div class="col-lg-6 mx-auto">
+            <div class="stage-box">
+                STAGE
             </div>
-        </div> -->
-        <h1>예매</h1>
-        <div class="col" v-for="(seat, idx) in state.seats" :key="idx">
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"> 
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-primary-emphasis">좌석정보</strong>
-                    <h3 class="mb-0">{{ seat.seatType }}석</h3>
-                    <div class="mb-1 text-body-secondary">남은 좌석 : {{ seat.totalSeat }}석</div>
-                    <p class="card-text mb-auto">{{ seat.price }}원</p>
-                    
-                    <!-- 선택  -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" v-model="state.selectOption" v-bind:value="seat.seatId">
-                        <label class="form-check-label" for="flexRadioDefault1">선택</label>
-                        {{ state.selectOption }}
+            <div class="book-box">
+                A 
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group" v-for="(seat, idx) in state.seats" :key="idx">
+                    <div v-if="seat.seatRow == 'A'">
+                        <div v-if="!seat.isBook">
+                            <input type="checkbox" class="btn-check" autocomplete="off" v-bind:id="seat.seatId" v-model="state.seatIdList" v-bind:value="seat.seatId">
+                            <label class="btn btn-outline-secondary" v-bind:for="seat.seatId">{{ seat.seatRow }}{{ seat.seatCol }}</label><p></p>
+                        </div>
+                        <div v-else>
+                            <input type="checkbox" class="btn-check" autocomplete="off" v-bind:id="seat.seatId" v-model="seat.seatIdList" disabled>
+                            <label class="btn btn-secondary" v-bind:for="seat.seatId">{{ seat.seatRow }}{{ seat.seatCol }}</label><p></p>
+                        </div>
                     </div>
-                </div>
+                </div>{{ state.seatPrice["A"] }}원
+                <br>
+                B 
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group" v-for="(seat, idx) in state.seats" :key="idx">
+                    <div v-if="seat.seatRow == 'B'">
+                        <div v-if="!seat.isBook">
+                            <input type="checkbox" class="btn-check" autocomplete="off" v-bind:id="seat.seatId" v-model="state.seatIdList" v-bind:value="seat.seatId">
+                            <label class="btn btn-outline-secondary" v-bind:for="seat.seatId">{{ seat.seatRow }}{{ seat.seatCol }}</label><p></p>
+                        </div>
+                        <div v-else>
+                            <input type="checkbox" class="btn-check" autocomplete="off" v-bind:id="seat.seatId" v-model="seat.seatIdList" disabled>
+                            <label class="btn btn-secondary" v-bind:for="seat.seatId">{{ seat.seatRow }}{{ seat.seatCol }}</label><p></p>
+                        </div>
+                    </div>
+                </div> {{ state.seatPrice["B"] }}원
+                <br>
+                C 
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group" v-for="(seat, idx) in state.seats" :key="idx">
+                    <div v-if="seat.seatRow == 'C'">
+                        <div v-if="!seat.isBook">
+                            <input type="checkbox" class="btn-check" autocomplete="off" v-bind:id="seat.seatId" v-model="state.seatIdList" v-bind:value="seat.seatId">
+                            <label class="btn btn-outline-secondary" v-bind:for="seat.seatId">{{ seat.seatRow }}{{ seat.seatCol }}</label><p></p>
+                        </div>
+                        <div v-else>
+                            <input type="checkbox" class="btn-check" autocomplete="off" v-bind:id="seat.seatId" v-model="seat.seatIdList" disabled>
+                            <label class="btn btn-secondary" v-bind:for="seat.seatId">{{ seat.seatRow }}{{ seat.seatCol }}</label><p></p>
+                        </div>
+                    </div>
+                </div> {{ state.seatPrice["C"] }}원
+                <br>
+                D 
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group" v-for="(seat, idx) in state.seats" :key="idx">
+                    <div v-if="seat.seatRow == 'D'">
+                        <div v-if="!seat.isBook">
+                            <input type="checkbox" class="btn-check" autocomplete="off" v-bind:id="seat.seatId" v-model="state.seatIdList" v-bind:value="seat.seatId">
+                            <label class="btn btn-outline-secondary" v-bind:for="seat.seatId">{{ seat.seatRow }}{{ seat.seatCol }}</label><p></p>
+                        </div>
+                        <div v-else>
+                            <input type="checkbox" class="btn-check" autocomplete="off" v-bind:id="seat.seatId" v-model="seat.seatIdList" disabled>
+                            <label class="btn btn-secondary" v-bind:for="seat.seatId">{{ seat.seatRow }}{{ seat.seatCol }}</label><p></p>
+                        </div>
+                    </div>
+                </div> {{ state.seatPrice["D"] }}원
+                <br> 
+                E 
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group" v-for="(seat, idx) in state.seats" :key="idx">
+                    <div v-if="seat.seatRow == 'E'">
+                        <div v-if="!seat.isBook">
+                            <input type="checkbox" class="btn-check" autocomplete="off" v-bind:id="seat.seatId" v-model="state.seatIdList" v-bind:value="seat.seatId">
+                            <label class="btn btn-outline-secondary" v-bind:for="seat.seatId">{{ seat.seatRow }}{{ seat.seatCol }}</label><p></p>
+                        </div>
+                        <div v-else>
+                            <input type="checkbox" class="btn-check" autocomplete="off" v-bind:id="seat.seatId" v-model="seat.seatIdList" disabled>
+                            <label class="btn btn-secondary" v-bind:for="seat.seatId">{{ seat.seatRow }}{{ seat.seatCol }}</label><p></p>
+                        </div>
+                    </div>
+                </div> {{ state.seatPrice["E"] }}원
+            </div>
+
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <button type="button" class="btn btn-secondary btn-lg px-4 gap-3" @click="book">예매하기</button>
+                <button type="button" class="btn btn-outline-secondary btn-lg px-4" @click="goback">뒤로가기</button>
             </div>
         </div>
-        
-
-
-        <!-- TODO: 예매 기능 -->
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <button type="button" class="btn btn-primary btn-lg px-4 gap-3" @click="book">예매하기</button>
-            <button type="button" class="btn btn-outline-secondary btn-lg px-4" @click="goback">뒤로가기</button>
-      </div>
-    </main>
+    </div>
 </template>
 
 <script>
@@ -51,40 +100,40 @@ export default {
         const id = route.params.id;
         const state = reactive({
             seats: {},
-            selectOption: ""
+            seatIdList: [],
+            seatPrice: {}
         })
 
-        // 좌석 정보
+        // 좌석 정보 초기화
         axios.get("/api/performances/" + id)
         .then((res) => {
             state.seats = res.data.seats
+            for(let i = 0; i < res.data.seats.length; i += 5) {
+                state.seatPrice[res.data.seats[i].seatRow] = res.data.seats[i].price
+            }
         })
 
         // 예매하기
         const book = () => {
-            const args = {
-                seatId: state.selectOption,
-                seatNum: 1
-            }
-
-            axios.post("/api/books", args)
-                .then((res) => {
-                    alert("예매가 완료되었습니다")
-                    router.push({path: "/my/books"})
-                })
-                .catch((err) => {
-                    alert("로그인이 필요한 서비스입니다")
-                    router.push("/login")
-                })
+            console.log(state.seatIdList);
+            axios.post("/api/books", state.seatIdList)
+            .then(res => {
+                window.alert("예매가 완료되었습니다");
+                router.push("/my/books")
+            })
+            .catch((err) => {
+                alert("로그인이 필요한 서비스입니다")
+                router.push("/login")
+            })
         }
-
 
         // 뒤로가기
         const goback = () => {
             router.go(-1)
         }
 
-        return { route, id, state, goback, book }
+    
+        return { route, id, state, goback, book}
     }
 }
 </script>
@@ -93,6 +142,27 @@ export default {
 h1 {
     text-align: center;
     margin-bottom: 2rem;
+}
+.stage-box {
+    text-align: center;
+    width: 80%;
+    height: 200px;
+    background-color: lightgray;
+    margin: 0 auto;
+    color: white;
+}
+
+.inline{
+    display: inline-block;
+}
+
+@media (min-width: 992px) {
+  .rounded-lg-3 { border-radius: .3rem; }
+}
+
+.book-box {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
 }
 
 </style>
