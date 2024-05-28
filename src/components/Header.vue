@@ -8,11 +8,10 @@
       </div>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 link-secondary">콘서트</a></li>
-        <li><a href="#" class="nav-link px-2 link-secondary">연극</a></li>
-        <li><a href="#" class="nav-link px-2 link-secondary">뮤지컬</a></li>
-        <li><a href="#" class="nav-link px-2 link-secondary">전시</a></li>
-        <li><a href="#" class="nav-link px-2 link-secondary">클래식</a></li>
+        <li><a href="#" class="nav-link px-2 link-secondary" @click="searchConcert">콘서트</a></li>
+        <li><a href="#" class="nav-link px-2 link-secondary" @click="searchPlay">연극</a></li>
+        <li><a href="#" class="nav-link px-2 link-secondary" @click="searchMusical">뮤지컬</a></li>
+        <li><a href="#" class="nav-link px-2 link-secondary" @click="searchClassic">클래식</a></li>
       </ul>
 
       <div class="col-md-3 text-end">
@@ -64,7 +63,27 @@ export default {
           })
       }
 
-      return { logout, goToMyPage }
+      // 콘서트 페이지로 이동
+      const searchConcert = () => {
+        router.push("/concert")
+      }
+
+      // 연극 페이지로 이동
+      const searchPlay = () => {
+        router.push("/play")
+      }
+
+      // 뮤지컬 페이지로 이동
+      const searchMusical = () => {
+        router.push("/musical")
+      }
+
+      // 클래식 페이지로 이동
+      const searchClassic = () => {
+        router.push("/classic")
+      }
+
+      return { logout, goToMyPage, searchConcert, searchPlay, searchMusical, searchClassic }
     }
 }
 </script>
