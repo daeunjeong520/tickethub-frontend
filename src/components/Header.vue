@@ -3,7 +3,7 @@
       <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
       <div class="col-md-3 mb-2 mb-md-0">
         <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-            <h5 class="logo-style">예매 조아</h5>
+            <h5 class="logo-style">예매 좋아</h5>
         </a>
       </div>
 
@@ -12,6 +12,7 @@
         <li><a href="#" class="nav-link px-2 link-secondary" @click="searchPlay">연극</a></li>
         <li><a href="#" class="nav-link px-2 link-secondary" @click="searchMusical">뮤지컬</a></li>
         <li><a href="#" class="nav-link px-2 link-secondary" @click="searchClassic">클래식</a></li>
+        <li><a style="color: red; font-weight: bold;" href="#" class="nav-link px-2 link-event" @click="event">EVENT</a></li>
       </ul>
 
       <div class="col-md-3 text-end">
@@ -83,7 +84,12 @@ export default {
         router.push("/classic")
       }
 
-      return { logout, goToMyPage, searchConcert, searchPlay, searchMusical, searchClassic }
+      // 이벤트 페이지
+      const event = () => {
+        router.push("/event")
+      }
+
+      return { logout, goToMyPage, searchConcert, searchPlay, searchMusical, searchClassic, event }
     }
 }
 </script>

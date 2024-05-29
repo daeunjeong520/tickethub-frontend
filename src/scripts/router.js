@@ -13,6 +13,10 @@ import PlayMain from "@/pages/category/PlayMain.vue"
 import ClassicMain from "@/pages/category/ClassicMain.vue"
 import MusicalMain from "@/pages/category/MusicalMain.vue"
 
+import EventMain from "@/event/EventMain.vue"
+import EventDetail from "@/event/EventDetail.vue"
+import EventBook from "@/event/EventBook.vue"
+
 const routes = [
     { path: "/", component: Home},
     { path: "/concert", component: ConcertMain},
@@ -25,6 +29,9 @@ const routes = [
     { path: "/my/books/:id", component: MyBookDetail },
     { path: "/login", component: Login},
     { path: "/signup", component: SignUp},
+    { path: "/event", component: EventMain},
+    { path: "/event/:id", component: EventDetail},
+    { path: "/event/:id/book", component: EventBook}
 ]
 
 const router = createRouter({

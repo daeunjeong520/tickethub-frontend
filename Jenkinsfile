@@ -19,7 +19,6 @@ pipeline {
     
     // 앱
     githubCredentialApplication = 'credential-github-application'
-   
   }
 
   stages {
