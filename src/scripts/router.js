@@ -17,8 +17,6 @@ import EventMain from "@/event/EventMain.vue"
 import EventDetail from "@/event/EventDetail.vue"
 import EventBook from "@/event/EventBook.vue"
 
-import Test from "@/pages/Test.vue"
-
 const routes = [
     { path: "/", component: Home},
     { path: "/concert", component: ConcertMain},
@@ -33,8 +31,7 @@ const routes = [
     { path: "/signup", component: SignUp},
     { path: "/event", component: EventMain},
     { path: "/event/:id", component: EventDetail},
-    { path: "/event/:id/book", component: EventBook},
-    { path: "/test", component: Test}
+    { path: "/event/:id/book", component: EventBook}
 ]
 
 const router = createRouter({
