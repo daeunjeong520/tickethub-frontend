@@ -48,14 +48,7 @@
     </div>
   </main>
   
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">이번주 HOT</h1>
-        <h2 class="lead text-body-secondary"></h2>
-      </div>
-    </div>
-  </section>
+  <h1 style="text-align: center;" class="fw-light">이번주 HOT</h1>
 
    <div class="album py-5 bg-body-tertiary">
       <div class="container">
@@ -108,6 +101,10 @@ export default {
 .container {
   width: 60%;
 }
+h1 {
+  margin-bottom: 3rem;
+}
+
 .card-text {
     text-align: center;
 }
