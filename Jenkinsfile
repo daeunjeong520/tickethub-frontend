@@ -44,6 +44,7 @@ pipeline {
 
       steps {
         sh "npm i @vue/cli-service"
+        sh "npm run build"
 
         // 도커 이미지 빌드
         sh "docker build . -t ${awsecrRegistry}:${currentBuild.number}"
