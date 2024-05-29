@@ -45,7 +45,7 @@ pipeline {
       steps {
         sh "npm i @vue/cli-service"
         sh "npm run build"
-
+        
         // 도커 이미지 빌드
         sh "docker build . -t ${awsecrRegistry}:${currentBuild.number}"
         sh "docker build . -t ${awsecrRegistry}:latest"
@@ -101,7 +101,7 @@ pipeline {
         // 이미지 태그 변경 후 메인 브랜치에 푸시
         sh "git config --global user.email ${gitEmail}"
         sh "git config --global user.name ${gitName}"
-        sh "cd prod && cd frontend && kustomize edit set image ${awsecrRegistry}:latest && kustomize build ."
+        sh "cd prod && cd frontend && kustomize edit set image ${awsecrRegistry}:${currentBuild.number} && kustomize build ."
         sh "git add -A"
         sh "git status"
         sh "git commit -m 'update the image tag'"
