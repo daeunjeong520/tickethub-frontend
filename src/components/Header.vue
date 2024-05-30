@@ -12,7 +12,7 @@
         <li><a href="#" class="nav-link px-2 link-secondary" @click="searchPlay">연극</a></li>
         <li><a href="#" class="nav-link px-2 link-secondary" @click="searchMusical">뮤지컬</a></li>
         <li><a href="#" class="nav-link px-2 link-secondary" @click="searchClassic">클래식</a></li>
-        <li><a style="color: red; font-weight: bold;" href="#" class="nav-link px-2 link-event" @click="event">EVENT</a></li>
+        <li><a style="color: white; font-weight: bold;" href="#" class="nav-link px-2 link-event" @click="event">EVENT</a></li>
       </ul>
 
       <div class="col-md-3 text-end">
