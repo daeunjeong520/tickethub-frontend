@@ -120,6 +120,6 @@ th {
 }
 button {
     margin-top: 0.5rem;
-    margin-left: 16rem;
+    margin-left: 11rem;
 }
 </style>

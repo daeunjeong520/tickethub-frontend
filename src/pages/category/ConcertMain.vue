@@ -50,7 +50,7 @@ export default {
 
 <style scoped>
 .container {
-  width: 60%;
+  width: 70%;
 }
 .card-text {
     text-align: center;

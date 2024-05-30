@@ -30,7 +30,7 @@ export default {
     .card .img {
         display: inline-block;
         width: 100%;
-        height: 500px;
+        height: 400px;
         background-size: cover;
         background-position: center;
     }

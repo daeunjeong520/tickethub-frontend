@@ -99,10 +99,13 @@ export default {
   height: 32rem;
 }
 .container {
-  width: 60%;
+  width: 70%;
 }
 h1 {
-  margin-bottom: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+  color: gray;
+  font-weight: bolder;
 }
 
 .card-text {
