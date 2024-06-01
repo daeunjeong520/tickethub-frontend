@@ -3,7 +3,7 @@
         <section class="py-5 text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">예매 좋아&nbsp;&nbsp; X  &nbsp;&nbsp;SUMMER MUSICAL</h1>
+                    <h1 class="fw-light">예매 좋아<br>SUMMER MUSICAL</h1>
                     <h2 class="lead"></h2>
                 </div>
             </div>
@@ -114,12 +114,13 @@ img {
     height: 60%;
     background-size: cover;
     background-position: center;
+    margin-left: 13rem;
 }
 th {
     color: grey;
 }
 button {
     margin-top: 0.5rem;
-    margin-left: 11rem;
+    margin-left: 18rem;
 }
 </style>
