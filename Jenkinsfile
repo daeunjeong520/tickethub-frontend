@@ -32,12 +32,15 @@ pipeline {
       }
     }
 
-    stage('Docker Image Build') {
-
+    stage('npm build') {
       steps {
         sh "npm i @vue/cli-service"
         sh "npm run build"
-        
+      }
+    }
+
+    stage('Docker Image Build') {
+      steps {
         sh "docker build . -t ${awsecrRegistry}:${currentBuild.number}"
         sh "docker build . -t ${awsecrRegistry}:latest"
       }
@@ -50,7 +53,8 @@ pipeline {
           echo 'Docker image build success'
         }
       }
-    }  
+    }
+    
 
     stage('Docker Image Push') {
       steps {
